@@ -9,10 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import img from "../assets/recycle.png"
 import img1 from "../assets/recycle1.png"
-import img2 from "../assets/land2.png"
-import img3 from "../assets/land3.png"
-import img4 from "../assets/food11.jpeg"
-import img5 from "../assets/food10.jpeg"
+import img2 from "../assets/recycle-clean.png"
+import img3 from "../assets/recycle-invent.png"
+import img4 from "../assets/recycle-help.png"
+import img5 from "../assets/recycle1.png"
 
 import {Swiper, SwiperSlide} from 'swiper/react'
 import {Navigation, Pagination, Autoplay} from "swiper/modules"
@@ -145,8 +145,8 @@ function Landing() {
             <h2 className='uppercase text-[--nav] poppins font-bold text-[1.5rem] sm:text-[2rem] text-start'>Our Services
             </h2>
 
-            <p className='w-[20%] text-[--nav] pop'>
-              Modem network BASE jump hotdog RAF denim 
+            <p className='w-[20%] text-[--nav] poppins'>
+              We collect, sort, clean, recycle, protect, care.
             </p>
           </div>
           <div className='menu  sm:px-[2em]'>
@@ -201,15 +201,14 @@ function Landing() {
                   </h2>
 
                   <p className='text-[--nav] poppins w-[85%]'>
-                    DIY futurity augmented reality computer shrine RAF Legba rifle hacker. Shanty town cartel grenade ablative katana systemic crypto-warehouse claymore mine sensory. Assassin otaku film jeans sub-orbital into franchise stimulate cardboard tattoo Chiba paranoid render-farm footage. Chrome sentient nodal point cartel towards tower physical artisanal carbon lights semiotics 3D-printed. Assassin drone chrome receding dead stimulate j-pop semiotics car. Disposable city Kowloon plastic military-grade systemic bomb convenience store alcohol dead claymore mine. Drone 3D-printed girl pen numinous soul-delay dead decay courier systemic silent. Military-grade BASE jump otaku crypto-fluidity assassin hacker kanji engine cyber-artisanal tiger-team sign refrigerator shrine stimulate. 
-                  </p>
+                    Recycle market frontline clean-tech engine circular shrine zero-waste. We buy waste, process materials, decode trash into value—recycled, reshaped, reborn. Solar-forged plastics, eco-alloy scrap, glass reimagined in carbon-light hubs. Urban renewal crews, clean grid artisans, waste hackers neutralizing decay in green zones. City cores detoxed, communities upgraded, landfill futures denied. Circular economy frontline—every can, cord, crate re-looped. Reclaim street debris, elevate waste into market-grade goods. Zero leakage, full cycle, decentralized collection arrays—clean streets, clean skies, clean tomorrow. Recycled goods to new owners, every unit a story of rebirth. Powered by ethics, scaled by necessity, driven by planet-first logic.                  </p>
 
                 </div>
           </div>
         </section>
         <section className='px-[1em] sm:px-[--pdx] py-[2em]'>
           <div className='flex justify-center'>
-            <form action="" className='flex flex-col w-[80%] px-[8em] gap-[20px] items-center'>
+            <form action="" className='flex flex-col w-[70%] px-[8em] gap-[20px] items-center'>
                 
                 <h2 className='sm:text-[2rem] text-[1.5rem] text-[--nav] poppins text-center'>Request Quote</h2>
 
@@ -238,10 +237,12 @@ function Landing() {
                 </div>
                 <div className='flex flex-col  w-full items-start text-[--nav] poppins'>
                   <label htmlFor="email">Phone Number</label>
-                  <textarea name="message" id="message" className='w-full'  rows={8}></textarea>
+                  <textarea name="message" id="message" className='w-full rounded-[5px]'  rows={8}></textarea>
                 </div>
 
-
+                <button className='p-[10px] linear-grad shadow-md shadow-white sm:hover:scale-105 duration-[0.5s]  text-[--nav] capitalize font-semibold poppins w-full rounded-[5px]' type='submit'>
+                  submit
+                </button>
             </form>
           </div>
         </section>
@@ -276,9 +277,7 @@ function Landing() {
            className='sm:w-[50%] w-[90%] flex flex-col sm:h-auto h-full gap-[20px]'>
             <h3 className='sm:text-[2rem] text-[1.5rem] poppins font-bold poppins text-[--nav]  uppercase'>Our Location</h3>
               <p className='poppins text-[0.9rem] text-[--nav]'>
-                At Resto Kans, we are committed to providing an exceptional dining experience with a focus on quality, comfort, and convenience. Our team is dedicated to ensuring that every guest enjoys outstanding service, whether they are dining in or ordering from home. With a menu crafted from the finest ingredients, our chefs prepare delicious meals tailored to every taste.
-
-                We also offer a seamless online ordering system, making it easy to place orders from your phone or computer. Our e-services provide a variety of payment options, including credit cards and digital wallets, ensuring secure and hassle-free transactions</p>
+                Prince Abubakar Audu University, Kogi State—core ops zone. Embedded in a green-academic cradle, logistics optimized, access seamless. Clean energy grids hum beside lecture halls, knowledge flows with waste streams. Eco-hub synergy: where minds meet matter, where waste finds rebirth. Local waste channels feed our reclaim systems—zero-mile sourcing, real-time sorting. Conducive terrain, campus innovation, youth-driven cycles. Trees watch our bins; students walk our mission. Engineered silence, clean air corridors, lab-born sustainability. Strategic positioning amplifies impact—education meets execution. One location, infinite renewals. Our base isn't just where we operate—it’s where the future gets processed.</p>
               <motion.button
                 whileHover={{
                   x: '2em'
