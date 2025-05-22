@@ -72,16 +72,16 @@ function CartBar({selectedItems, onChange, onOrder}) {
     ))
 
   return (
-    <div className=' h-[86vh] overflow-scroll hide-scrollbar z-[2] sm:z-0 shadow-sm shadow-black sm:shadow-transparent  w-[380px] poppins top-[5em] rounded-[10px] fixed right-0 bg-[--nav] p-[1em] flex flex-col gap-[.5em]'>
-            <h2 className='text-[--black] font-bold'>Customer Information</h2>
-        <div className='bg-[--bg] p-[.5em] rounded-[8px]'>
-            <p className='text-[0.8rem] text-[--gray]'>Customer name</p>
-            <h3 className='font-bold'>John Doe</h3>
+    <div className=' h-[86vh] overflow-scroll hide-scrollbar z-[2] sm:z-0 shadow-sm shadow-black sm:shadow-white  w-[380px] poppins top-[5em] rounded-[10px] fixed right-0 bg-transparent p-[1em] text-[--nav] flex flex-col gap-[.5em]'>
+            <h2 className='text-[--nav] font-bold'>Customer Information</h2>
+        <div className='bg-[--nav] p-[.5em] rounded-[8px]'>
+            <p className='text-[0.8rem] text-[--black]'>Customer name</p>
+            <h3 className='font-bold text-[--black]'>John Doe</h3>
         </div>
-        <div className='bg-[--bg] p-[.5em] rounded-[8px] flex justify-between items-center'>
+        <div className='bg-[--nav] p-[.5em] rounded-[8px] flex justify-between items-center'>
             <div >
-                <p className='text-[0.8rem] text-[--gray]'>Number of persons</p>
-                <h3>12 persons per table</h3>
+                <p className='text-[0.8rem] text-[--black]'>Number of persons</p>
+                <h3 className='text-[--black]'>12 persons per table</h3>
             </div>
             <div className='flex gap-[1em] items-center'>
                 <button>
@@ -104,11 +104,11 @@ function CartBar({selectedItems, onChange, onOrder}) {
         </div>
         <h2>Payment Summary</h2>
         <ul className='flex flex-col gap-1'>
-            <li className='flex justify-between text-[0.8rem] text-[--black]'><p>Subtotal</p><p><FontAwesomeIcon icon={faNairaSign}/>{selectedItems.filter(items => items.quantity != 0).length > 0 ? total : "0.00"}</p></li>
-            <li className='flex justify-between text-[0.8rem] text-[--black]'><p>Discount Sales</p><p><FontAwesomeIcon icon={faNairaSign}/>{"0.00"}</p></li>
-            {/* <li className='flex justify-between text-[0.8rem] text-[--black]'><p>Total tax</p><p><FontAwesomeIcon icon={faNairaSign}/>{selectedItems.filter(items => items.quantity != 0).length > 0 ? total : "0.00"}</p></li> */}
-            <hr  className='bg-[--black] border-black'/>
-            <li className='flex justify-between text-[0.8rem] text-[--black]'><p>Total</p><p><FontAwesomeIcon icon={faNairaSign}/>{selectedItems.filter(items => items.quantity != 0).length > 0 ? total : "0.00"}</p></li>
+            <li className='flex justify-between text-[0.8rem] text-[--nav]'><p>Subtotal</p><p><FontAwesomeIcon icon={faNairaSign}/>{selectedItems.filter(items => items.quantity != 0).length > 0 ? total : "0.00"}</p></li>
+            <li className='flex justify-between text-[0.8rem] text-[--nav]'><p>Discount Sales</p><p><FontAwesomeIcon icon={faNairaSign}/>{"0.00"}</p></li>
+            {/* <li className='flex justify-between text-[0.8rem] text-[--nav]'><p>Total tax</p><p><FontAwesomeIcon icon={faNairaSign}/>{selectedItems.filter(items => items.quantity != 0).length > 0 ? total : "0.00"}</p></li> */}
+            <hr  className='bg-[--black] border-[--nav]'/>
+            <li className='flex justify-between text-[0.8rem] text-[--nav]'><p>Total</p><p><FontAwesomeIcon icon={faNairaSign}/>{selectedItems.filter(items => items.quantity != 0).length > 0 ? total : "0.00"}</p></li>
         </ul>
         <button onClick={() => {
             if(selectedItems.filter(items => items.quantity != 0).length > 0) {

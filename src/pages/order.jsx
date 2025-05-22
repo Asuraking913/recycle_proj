@@ -127,7 +127,16 @@ useInterval(() => {
                 <SideBar nav={nav}/>
             }
             <div className='text-[--bdcolor] w-full  sm:block sm:w-[80%]  min-h-[100vh] mt-[4em] sm:mt-[6em] min-[300px]: ml-[.2em] sm:ml-[6em]'>
-              <h1 className='sm:text-2xl text-xl sm:text-left text-center font-bold poppins py-[.5em]'>Explore out best menu for today</h1>
+              <h1 className='sm:text-2xl text-xl sm:text-left text-center font-bold poppins py-[.5em] text-[--nav]'>Explore out best menu for today</h1>
+              <div className='flex w-[80%] mt-[10px] mb-[10px]'>
+                <button  className='w-full shadow-sm shadow-white p-[10px] urba rounded-l-[5px] bg-black text-[--nav]'>
+                  Buying 
+                </button>
+                <button  className='w-full shadow-sm shadow-black p-[10px] urba rounded-r-[5px] bg-[--nav] text-[--black]'>
+                  Selling
+                </button>
+
+              </div>
               <div className='flex flex-wrap gap-[.4em] sm:justify-normal justify-center sm:gap-2' >
                 {foodList}
               </div>

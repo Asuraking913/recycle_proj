@@ -8,12 +8,12 @@ const Truncate = ({text, maxLength, subLength}) => {
 
     if (text.length > maxLength & !full) {
       return (
-        <i className="poppins not-italic font-bold text-[--black] sm:text-[1rem] text-[0.8rem]">{text.substring(0, subLength) + '...'} <button href="" onClick={() => setFull(true)} className='hover:text-[--accent1] text-[#593f3bbe] underline sm:text-[0.8rem] text-[0.4rem]'>Read more</button></i>
+        <i className="poppins not-italic font-bold text-[--nav] sm:text-[1rem] text-[0.8rem]">{text.substring(0, subLength) + '...'} <button href="" onClick={() => setFull(true)} className='hover:text-[--accent1] text-[#593f3bbe] underline sm:text-[0.8rem] text-[0.4rem]'>Read more</button></i>
       )
     }
 
     return (
-      <i className="poppins not-italic font-bold text-[--black] sm:text-[1rem] text-[0.8rem]">{text}</i>
+      <i className="poppins not-italic font-bold text-[--nav] sm:text-[1rem] text-[0.8rem]">{text}</i>
     )
     
   }
