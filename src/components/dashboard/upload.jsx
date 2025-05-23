@@ -49,10 +49,10 @@ function Upload() {
     <section className='w-full h-[300px] mt-[1em] flex sm:flex-row flex-col  gap-[1em]'>
 
         {img == "" ? <form >
-            <div onClick={(e) => handlePicture(e, fileInput)} className='w-[400px] h-[300px] rounded-[5px] cursor-pointer border-dashed border-[--black] border-[1.5px] flex items-center justify-center flex-col'>
+            <div onClick={(e) => handlePicture(e, fileInput)} className='w-[400px] h-[300px] rounded-[5px] cursor-pointer border-dashed border-[--nav] border-[1.5px] flex items-center justify-center flex-col'>
 
                 <input className='hidden' onChange={(e) => uploader(e, setImg, setImageData)} ref={fileInput} type="file" name="image" id="image" />
-                <h2 className='poppins sm:text-xl'>Upload Image file</h2>
+                <h2 className='poppins sm:text-xl text-[--nav]'>Upload Image file</h2>
                 <p className='text-[0.8rem] text-red-400 poppins'>Supported images are of type: jpeg, jpg, png</p>
                 {error && <p className='poppins text-red-600 animate-pulse'>{error}</p>}
 
@@ -100,7 +100,7 @@ function Upload() {
                         </p>
                     </li>   
                 </ul>
-                <button type="submit" className='bg-[--black] hover:opacity-90 duration-[0.2s] text-[--nav] w-full p-[8px] poppins sm:text-xl'>{loading ? <FontAwesomeIcon className='sm:text-xl animate-spin' icon={faSpinner}/> : "Upload Product"}</button>
+                <button type="submit" className='hover:opacity-90 duration-[0.2s] text-[--nav] linear-grad shadow-sm shadow-white rounded-[5px] w-full p-[8px] poppins sm:text-xl'>{loading ? <FontAwesomeIcon className='sm:text-xl animate-spin' icon={faSpinner}/> : "Upload Product"}</button>
             </div>
         </form>
     </section>

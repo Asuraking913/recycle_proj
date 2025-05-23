@@ -137,22 +137,22 @@ function Dashboard() {
         <section className=' sm:pl-[--pdx] py-[.5em] pt-[4em] flex sm:flex-row flex-col gap-[.5em] items-center'>
             <div className={`m-[10px] ${adminUser ? "sm:w-[50%]" :"sm:w-[63%]"}`}>
                 <div className='  '>
-                    {!adminUser && <h1 className='text-[2rem] poppins font-bold'>Welcome to Your DashBoard</h1>}
-                    {adminUser && <h1 className='text-[2rem] poppins font-bold capitalize'>Welcome to the Admin panel</h1>}
-                    <p className='poppins text-[0.9rem]'>View your recent transactions and activity</p>
+                    {!adminUser && <h1 className='text-[2rem] text-[--nav] poppins font-bold'>Welcome to Your DashBoard</h1>}
+                    {adminUser && <h1 className='text-[2rem] poppins text-[--nav] font-bold capitalize'>Welcome to the Admin panel</h1>}
+                    <p className='poppins text-[--nav] text-[0.9rem]'>View your recent transactions and activity</p>
                 </div>
             </div>
 
             {/* Tab Block */}
-            <div className={`flex gap-[0em] ml-[1em] sm:pl-0 ${ adminUser ?  "sm:w-[50%]" : "w-auto"} sm:flex-nowrap flex-wrap sm:px-0 px-[1em] bg-[--nav] justify-between mt-[10px] rounded-[5px] mr-[10px]`}>
+            {/*<div className={`flex gap-[0em] ml-[1em] sm:pl-0 ${ adminUser ?  "sm:w-[50%]" : "w-auto"} sm:flex-nowrap flex-wrap sm:px-0 px-[1em] bg-[--nav] justify-between mt-[10px] rounded-[5px] mr-[10px]`}>
                 {tabList}
-            </div>
+            </div>*/}
             
         </section>
         <nav className='sm:px-[--pdx] px-[1em]'>
             <ul className='flex mt-[1em] sm:w-auto w-[90%] sm:justify-normal justify-between ubun flex-wrap'>
-                {adminUser && <li ><button onClick={() => handleOrder(setClicked)}  className={`p-[.5em] ${clicked === 'orders' ? " sm:hover:bg-[--black] bg-[--nav] text-[--black] sm:hover:text-[--nav]"  : " sm:hover:bg-[--nav] bg-[--black] text-[--nav] "} duration-[0.2s] px-[1em]  sm:hover:text-[--black] sm:hover:shadow-md shadow-[--black]`}>Recent Orders</button></li>}
-                {adminUser && <li ><button onClick={() => handleUpload(setClicked)}  className={`p-[.5em] ${clicked === 'upload' ? " sm:hover:bg-[--black] bg-[--nav] text-[--black] sm:hover:text-[--nav]"  : " sm:hover:bg-[--nav] bg-[--black] text-[--nav] "} duration-[0.2s] px-[1em]  sm:hover:text-[--black] sm:hover:shadow-md shadow-[--black]`}>Upload</button></li>}
+                {adminUser && <li ><button onClick={() => handleOrder(setClicked)}  className={`p-[.5em] ${clicked === 'orders' ? " sm:hover:bg-[--black] bg-[--nav] text-[--black] sm:hover:text-[--nav]"  : " sm:hover:bg-[--nav] bg-[--black] text-[--nav] "} duration-[0.2s] px-[1em]  sm:hover:text-[--black] sm:hover:shadow-md shadow-[--black]`}>Pending Orders</button></li>}
+                {adminUser && <li ><button onClick={() => handleUpload(setClicked)}  className={`p-[.5em] ${clicked === 'upload' ? " sm:hover:bg-[--black] bg-[--nav] text-[--black] sm:hover:text-[--nav]"  : " sm:hover:bg-[--nav] bg-[--black] text-[--nav] "} duration-[0.2s] px-[1em]  sm:hover:text-[--black] sm:hover:shadow-md shadow-[--black]`}>Upload Item</button></li>}
                 {!adminUser && <li ><button onClick={() => handleReceipts(setClicked)}  className={`p-[.5em] ${clicked === 'receipts' ? " sm:hover:bg-[--nav] bg-[--nav] sm:hover:text-[--black] text-[--black]"  : " sm:hover:bg-[--nav] bg-[--black] text-[--nav] "} duration-[0.2s] px-[1em]  sm:hover:text-[--black] sm:hover:shadow-md shadow-[--black]`}>Receipts</button></li>}
                 {!adminUser && <li ><button onClick={() => handlePayment(setClicked)}  className={`p-[.5em] ${clicked === 'payments' ? " sm:hover:bg-[--nav] bg-[--nav] sm:hover:text-[--black] text-[--black]"  : " sm:hover:bg-[--nav] bg-[--black] text-[--nav] "} duration-[0.2s] px-[1em]  sm:hover:text-[--black] sm:hover:shadow-md shadow-[--black]`}>Payment methods</button></li>}
             </ul>

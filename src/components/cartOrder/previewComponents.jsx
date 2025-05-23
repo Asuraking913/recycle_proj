@@ -2,7 +2,7 @@ import React from 'react'
 
 function PrevComp({img, id, name, price, quantity, total}) {
   return (
-    <div className='w-full flex items-center justify-between '>
+    <div className='w-full flex items-center  justify-between '>
         <figure>
             <img src={img} className='w-[90px] h-[90px] rounded-[50%] object-cover' alt="" />
         </figure>

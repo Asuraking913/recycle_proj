@@ -37,7 +37,7 @@ function CartBar({selectedItems, onChange, onOrder}) {
                 exit={{
                   scale: 0
                 }}
-                key={i} className='flex bg-[--nav] p-[.5em] rounded-[10px] justify-between'>
+                key={i} className='flex linear-grad p-[.5em] rounded-[10px] justify-between'>
                 <div className='flex gap-[.5em] items-center'>
                     <img className='w-[60px] object-cover h-[60px] rounded-[5px]' src={items.img} alt="item-image" />
                     <div className='text-[0.9rem] flex flex-col justify-center gap-[em]'>
@@ -47,7 +47,7 @@ function CartBar({selectedItems, onChange, onOrder}) {
                         <button onClick={() => {
                              items.quantity < items.total && onChange({id : items.id, quantity: items.quantity-=1, event : false})
                             
-                            }}  className='hover:scale-[1.2] text-[0.9rem] duration-[0.3s]'>
+                            }}  className='hover:scale-[1.2] text-[0.9rem] text-[--black] duration-[0.3s]'>
                             <FontAwesomeIcon icon={faMinus} className='p-[.2em] bg-[--nav] rounded-[50%]'/>
                         </button>
                         <p>{items.quantity}</p>
@@ -85,7 +85,7 @@ function CartBar({selectedItems, onChange, onOrder}) {
             </div>
             <div className='flex gap-[1em] items-center'>
                 <button>
-                    <FontAwesomeIcon icon={faMinus} className='p-[.2em] bg-[--nav] rounded-[50%]'/>
+                    <FontAwesomeIcon icon={faMinus} className='p-[.2em] rounded-[50%]'/>
                 </button>
                 <p>12</p>
                 <button>
@@ -94,7 +94,7 @@ function CartBar({selectedItems, onChange, onOrder}) {
             </div>
         </div>
         <div className='flex justify-between'>
-            <h2 className='text-[--black] font-bold'>Current Order</h2>
+            <h2 className='text-[--nav] font-bold'>Current Order</h2>
             <p className='text-[--black] text-[0.8rem]'>{selectedItems.filter(items => items.quantity != 0).length} Item</p>
         </div>
         <div className='sm:max-h-[300px] max-h-[400px] rounded-[10px] bg-[--bg] p-[.5em] '>
@@ -114,7 +114,7 @@ function CartBar({selectedItems, onChange, onOrder}) {
             if(selectedItems.filter(items => items.quantity != 0).length > 0) {
                 onOrder(true)
             }
-        }} className='bg-[--black] p-[.5em] text-[--nav] rounded-[2em]'>Order Now</button>
+        }} className='linear-grad text-[--nav] p-[.5em] text-[--nav] rounded-[2em]'>Order Now</button>
     </div>
   )
 }

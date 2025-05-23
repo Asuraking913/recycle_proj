@@ -128,8 +128,8 @@ function OrderCart({name, img, quantity, id, price, onSelect, selected, onError,
               }}
               
 
-               onClick={handleOrder}  className='bg-[--black] z-[2] sm:text-[1rem] text-[.8rem] sm:w-[50%] text-[--nav] rounded-[5px] px-[1em] sm:px-[1.5em] sm:rounded-[2em] sm:py-[.2em]'>
-              Order
+               onClick={handleOrder}  className='linear-grad shadow-sm shadow-[--gray] z-[2] sm:text-[1rem] text-[.8rem] sm:w-[50%] text-[--nav] rounded-[5px] px-[1em] sm:px-[1.5em] sm:rounded-[2em] sm:py-[.2em]'>
+              Buy
             </motion.button>
             :
             <motion.div
