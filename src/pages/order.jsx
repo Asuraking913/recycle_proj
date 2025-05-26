@@ -140,7 +140,16 @@ useInterval(() => {
                 
                 </h1>
 
-                <button onClick={() => setShowCart(true)} className='text-2xl hover:scale-105 duration-[0.5s] p-[10px] bg-[--nav] rounded-full shadow-sm shadow-white'>
+                <button onClick={() => {
+
+                  if(selectedItems.filter(item => !(deleted.includes(item.id))).length > 0) {
+                    setShowCart(true)
+                    return
+                  }
+
+                  setError("Your cart is empty")
+
+                }} className='text-2xl hover:scale-105 duration-[0.5s] p-[10px] bg-[--nav] rounded-full shadow-sm shadow-white'>
                   <MdOutlineShoppingCart />
                 </button>
               </div>
