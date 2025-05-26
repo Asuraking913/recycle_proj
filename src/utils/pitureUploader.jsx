@@ -20,6 +20,8 @@ export const handleSubmit = async (e, data) => {
     formData.append('available_stock',  data.stock)
     formData.append('category', data.category)
     formData.append('image', data.img)
+    formData.append('weight', data.weight)
+    formData.append('descrip', data.descrip)
 
     // for (var pair of formData.entries()) {
     //     console.log(pair[0]+ ', ' + pair[1]);
@@ -29,19 +31,24 @@ export const handleSubmit = async (e, data) => {
         const response = await Axios.post("/api/product/", formData).then(response => {
             if (response.status == 201) {
                 data.nameRef.current.value = ""
-                data.catRef.current.value = ""
+                // data.catRef.current.value = ""
                 data.priceRef.current.value = ""
                 data.stockRef.current.value = ""
                 data.onImage("")
                 data.onImageData("")
                 data.onLoading(false)
+                data.onSuccess(prev => "Upload Successfull")
+
+
+                return
             }
         })
     }
 
     catch(error) {
+        console.log(error)
         data.onLoading(false)
-        data.onError("An Error Occured")
+        data.onError("An Error Occured123")
     }
 
 }
