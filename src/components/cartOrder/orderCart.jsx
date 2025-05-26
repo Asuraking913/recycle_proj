@@ -4,7 +4,7 @@ import { faMinus, faNairaSign, faPlusCircle } from '@fortawesome/free-solid-svg-
 import {motion, AnimatePresence} from "framer-motion"
 import Truncate from '../../utils/truncate'
 
-function OrderCart({name, img, quantity, id, price, onSelect, selected, onError, onDuplicate, change, deleted}) {
+function OrderCart({name, img, quantity, id, price, onSelect, selected, onError, onDuplicate, change, deleted, descrip}) {
 
   const [available, setAvailable] = useState(quantity)
   const [newQuantity, setNewQuantity] = useState(0)
@@ -92,7 +92,7 @@ function OrderCart({name, img, quantity, id, price, onSelect, selected, onError,
 
   return (
    
-      <div className='sm:w-[280px] w-[49%] p-[.5em] bg-transparent shadow-sm shadow-white text-[--white] rounded-[10px] flex gap-[1em] flex-col'>
+      <div className='sm:w-[400px] w-[49%] p-[.5em] bg-transparent shadow-sm shadow-white text-[--white] rounded-[10px] flex gap-[1em] flex-col'>
         <div className='flex flex-col gap-[.5em] relative'>
           <img className='w-full h-[120px] sm:h-[200px] object-cover rounded-[10px]' src={img} alt="Food Image" />
           <p className='ubun font-bold text-[--black] sm:text-[1rem] text-[0.8rem]'><Truncate text={name} maxLength={22} subLength={16}/></p>
@@ -101,9 +101,16 @@ function OrderCart({name, img, quantity, id, price, onSelect, selected, onError,
   
           </div>
         </div>
+        <div>
+          <p className='text-[0.85rem] poppins text-[--nav]'>
+            {
+              descrip
+            }
+          </p>
+        </div>
         <div className='flex justify-between'>
           <div >
-            <p className='sm:text-[0.9rem] text-[0.7rem] poppins opacity-70 text-[--nav]'>Price per potion</p>
+            {/*<p className='sm:text-[0.9rem] text-[0.7rem] poppins opacity-70 text-[--nav]'>Price per potion</p>*/}
             <p className='poppins sm:text-[0.9rem] text-[0.8rem] text-[--nav]'><FontAwesomeIcon icon={faNairaSign}/>{price.toLocaleString()}</p>
           </div>
 
@@ -128,7 +135,7 @@ function OrderCart({name, img, quantity, id, price, onSelect, selected, onError,
               }}
               
 
-               onClick={handleOrder}  className='linear-grad shadow-sm shadow-[--gray] z-[2] sm:text-[1rem] text-[.8rem] sm:w-[50%] text-[--nav] rounded-[5px] px-[1em] sm:px-[1.5em] sm:rounded-[2em] sm:py-[.2em]'>
+               onClick={handleOrder}  className='linear-grad shadow-sm shadow-[--gray] z-[2] sm:text-[1rem] text-[.8rem] sm:w-[50%] text-[--nav] rounded-[5px] px-[1em] sm:px-[1.5em] sm:rounded-[2em] sm:py-[.5em]'>
               Buy
             </motion.button>
             :
@@ -175,7 +182,7 @@ function OrderCart({name, img, quantity, id, price, onSelect, selected, onError,
                   whileHover={{
                     rotate: "360deg"
                   }}
-                   className='hover:scale-[1.2] hover:duration-[0.5s] text-xl'>
+                   className='hover:scale-[1.2] hover:duration-[0.5s] text-xl text-[--nav]'>
                     <FontAwesomeIcon onClick={handleOrder} icon={faPlusCircle}/>
                   </motion.button>
               </motion.div>

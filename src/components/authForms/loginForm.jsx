@@ -50,9 +50,9 @@ function LoginForm({onLogin}) {
         onAuth: setIsAuthenticated,
 
         onLoading : setLoading
-      })} className='w-full flex flex-col gap-[1em]'>
+      })} className='w-full flex flex-col gap-[1em] text-[--black]'>
 
-        <h2 className='text-2xl poppins text-center font-bold text-[--black]'>Login</h2>
+        <h2 className='text-2xl poppins text-center font-bold text-[--nav]'>Login</h2>
         {error && 
         <motion.p 
         initial={{
@@ -71,11 +71,11 @@ function LoginForm({onLogin}) {
 
             <p className='poppins'>
               <label htmlFor="email">Email Address</label>
-              <input className='block border-[--blackv] border-[1.5px] w-full p-[8px] rounded-[5px]' type="email" onChange={(e) => setEmail(e.target.value)} name="email" id="email" />
+              <input className='text-[--black] block border-[--blackv] border-[1.5px] w-full p-[8px] rounded-[5px]' type="email" onChange={(e) => setEmail(e.target.value)} name="email" id="email" />
             </p>
             <p>
               <label htmlFor="password">Password</label>
-              <input className='block border-[--blackv] border-[1.5px] w-full p-[8px] rounded-[5px]' type="password" onChange={(e) => setPassword(e.target.value)} name="password" id="password" />
+              <input className='text-[--black] block border-[--blackv] border-[1.5px] w-full p-[8px] rounded-[5px]' type="password" onChange={(e) => setPassword(e.target.value)} name="password" id="password" />
             </p>
 
             <div className='flex justify-end'>

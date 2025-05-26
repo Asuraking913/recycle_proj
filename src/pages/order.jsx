@@ -13,6 +13,7 @@ import { QueryClient, useInfiniteQuery, useQueryClient } from '@tanstack/react-q
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { useInterval } from 'react-use'
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 function OrderPage() {
 
@@ -22,6 +23,7 @@ function OrderPage() {
 ])
 
 const [duplicate, setDuplicate] = useState([])
+const [showCart, setShowCart] = useState(false)
 const [deleted, setDeleted] = useState([])
 const [order, setOrder] = useState(false)
 const [error, setError] = useState("")
@@ -60,6 +62,7 @@ const [cartBar, setCartBar] = useState(false)
           const response = await Axios.get(`api/product/?page=${pageParam}`)
           if(response.status === 200) {
             setFullCount(prev => prev = response.data.count)
+            console.log(response.data.results)
             return response.data.results
           }
           
@@ -77,7 +80,7 @@ const [cartBar, setCartBar] = useState(false)
   })
 
   const foodList = data?.pages?.flatMap(pages => pages).map((item, i) => (
-   item && <OrderCart  onError={setError} key={i} name={item.name} change={change} deleted={deleted} onDelete={setDeleted} quantity={item.available_stock} id={item.id} onDuplicate={setDuplicate} img={item.image} price={item.price} onSelect={setSelectedItems} selected={selectedItems}/>
+   item && <OrderCart  onError={setError} key={i} name={item.name} change={change} deleted={deleted} onDelete={setDeleted} quantity={item.available_stock} id={item.id} onDuplicate={setDuplicate} img={item.image} price={item.price} onSelect={setSelectedItems} selected={selectedItems} descrip={item.descrip}/>
 ))
 
 useEffect(() => {
@@ -129,14 +132,20 @@ useInterval(() => {
             {nav &&
                 <SideBar nav={nav}/>
             }
-            <div className='text-[--bdcolor] w-full  sm:block sm:w-[80%]  min-h-[100vh] mt-[4em] sm:mt-[6em] min-[300px]: ml-[.2em] sm:ml-[6em]'>
-              <h1 className='sm:text-2xl text-xl sm:text-left text-center font-bold poppins py-[.5em] text-[--nav]'>
-                  
-                  Recycled Goods Available for Sale
+            <div className='text-[--bdcolor] w-full  sm:block sm:w-[100%]  min-h-[100vh] mt-[4em] sm:mt-[6em] min-[300px]: ml-[.2em] sm:ml-[6em]'>
+              <div className='flex items-center justify-between py-[10px] pr-[50px]'>
+                <h1 className='sm:text-2xl text-xl sm:text-left text-center font-bold poppins py-[.5em] text-[--nav]'>
+                    
+                    Recycled Goods Available for Sale
+                
+                </h1>
 
-              </h1>
+                <button onClick={() => setShowCart(true)} className='text-2xl hover:scale-105 duration-[0.5s] p-[10px] bg-[--nav] rounded-full shadow-sm shadow-white'>
+                  <MdOutlineShoppingCart />
+                </button>
+              </div>
               
-              <div className='flex flex-wrap gap-[.4em] sm:justify-normal justify-center sm:gap-2' >
+              <div className='flex sm:w-[100%] flex-wrap gap-[.4em] sm:gap-2' >
                 {foodList}
               </div>
               <div ref={loadingRef}  className=' text-center py-[2em]'>
@@ -170,9 +179,18 @@ useInterval(() => {
               </motion.div>
             }
             </AnimatePresence>
-            <div className='hidden sm:block z-[2]'>
-              <CartBar onOrder={setOrder}  selectedItems={selectedItems.reverse().filter(item => !(deleted.includes(item.id)))} onDelete={setDeleted} onChange={setChange} change={change}/>
-            </div>
+            {
+
+              showCart
+
+              && 
+
+              <section className='fixed top-0 left-0 flex justify-center items-center backdrop-blur-sm bg-[--blackv] bg-opacity-50 w-full h-full z-[2]'>
+                <div className=''>
+                            <CartBar onShowCart={setShowCart} onOrder={setOrder}  selectedItems={selectedItems.reverse().filter(item => !(deleted.includes(item.id)))} onDelete={setDeleted} onChange={setChange} change={change}/>
+                          </div>
+              </section>
+            }
           </section>
       </div>
     </>

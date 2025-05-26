@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faNairaSign, faPlusCircle, faTrash, } from '@fortawesome/free-solid-svg-icons'
 import handleOrders from '../../utils/order/handleOrders'
+import { FaTimes } from "react-icons/fa";
 
 
-function CartBar({selectedItems, onChange, onOrder}) {
+function CartBar({selectedItems, onChange, onOrder, onShowCart}) {
 
     // const [visible, setVisible] = useState(false)
     const cartBox = useRef()
@@ -72,8 +73,14 @@ function CartBar({selectedItems, onChange, onOrder}) {
     ))
 
   return (
-    <div className=' h-[86vh] overflow-scroll hide-scrollbar z-[2] sm:z-0 shadow-sm shadow-black sm:shadow-white  w-[380px] poppins top-[5em] rounded-[10px] fixed right-0 bg-transparent p-[1em] text-[--nav] flex flex-col gap-[.5em]'>
-            <h2 className='text-[--nav] font-bold'>Customer Information</h2>
+    <div className=' h-[90vh] overflow-scroll z-[2] sm:z-0 shadow-sm shadow-black sm:shadow-white  w-[380px] poppins top-[5em] rounded-[10px] right-0 linear-grad p-[1em] text-[--nav] flex flex-col gap-[.5em]'>
+            <div className='flex items-center justify-between'>
+                <h2 className='text-[--nav] font-bold'>Customer Information</h2>
+
+                <button onClick={() => onShowCart(prev => false)} className='text-2xl'>
+                    <FaTimes />
+                </button>
+            </div>
         <div className='bg-[--nav] p-[.5em] rounded-[8px]'>
             <p className='text-[0.8rem] text-[--black]'>Customer name</p>
             <h3 className='font-bold text-[--black]'>John Doe</h3>
@@ -114,7 +121,7 @@ function CartBar({selectedItems, onChange, onOrder}) {
             if(selectedItems.filter(items => items.quantity != 0).length > 0) {
                 onOrder(true)
             }
-        }} className='linear-grad text-[--nav] p-[.5em] text-[--nav] rounded-[2em]'>Order Now</button>
+        }} className='linear-grad text-[--nav] shadow-sm shadow-white p-[.5em] text-[--nav] rounded-[2em]'>Order Now</button>
     </div>
   )
 }

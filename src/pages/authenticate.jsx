@@ -16,7 +16,7 @@ function Authenticate() {
       </div>   */}
       <div className='flex gap-[5px] items-center '>
         <img src={logo} className='w-[40px] h-[40px]' alt="" />
-        <h1 className='ubun text-[2rem] '>Resto Kans</h1>
+        <h1 className='ubun text-[2rem] text-[--nav]'>Resto Kans</h1>
       </div>
       
       <div className='w-[400px]  min-h-[70vh] border-[1px] border-[--blackv] rounded-[5px] flex flex-col  items-center shadow-sm shadow-[--blackv]'>

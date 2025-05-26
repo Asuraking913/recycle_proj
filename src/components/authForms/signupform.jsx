@@ -10,6 +10,7 @@ import { motion } from 'framer-motion'
 function SignUp({onLogin}) {
 
   const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [password1, setPassword1] = useState("")
   const [toggle, setToggle] = useState(true)
@@ -25,9 +26,9 @@ function SignUp({onLogin}) {
 
   return (
     <div>
-        <form action="#" onSubmit={(e) => handleSumbit(e, setError, onLogin, {email : email, password : password, password1 : password1}, setLoading)} className='w-full  flex flex-col gap-[10px] py-[1em]'>
+        <form action="#" onSubmit={(e) => handleSumbit(e, setError, onLogin, {email : email, password : password, password1 : password1, username : username}, setLoading)} className='w-full  flex flex-col gap-[10px] py-[1em] text-[--nav]'>
 
-            <h2 className='text-xl poppins text-center font-bold text-[--black]'>Create An Account</h2>
+            <h2 className='text-xl poppins text-center font-bold text-[--nav]'>Create An Account</h2>
 
             {error && 
               <motion.p 
@@ -48,19 +49,25 @@ function SignUp({onLogin}) {
               </motion.p>
               }
 
-            <p className='poppins'>
-              <label htmlFor="email">Email Address</label>
-              <input className='block w-full p-[8px] rounded-[5px] shadow-sm border-[1.5px] border-[--blackv]' type="email" required onChange={(e) => setEmail(e.target.value)} name="email" id="email" />
-            </p>
+            <div className='flex gap-[10px]'>
+                          <p className='poppins'>
+                            <label htmlFor="email">Email Address</label>
+                            <input className='block text-[--black] w-full p-[8px] rounded-[5px] shadow-sm border-[1.5px] border-[--blackv]' type="email" required onChange={(e) => setEmail(e.target.value)} name="email" id="email" />
+                          </p>
+                          <p className='poppins'>
+                            <label htmlFor="email">Username</label>
+                            <input className='block text-[--black] w-full p-[8px] rounded-[5px] shadow-sm border-[1.5px] border-[--blackv]' type="text" required onChange={(e) => setUsername(e.target.value)} name="email" id="email" />
+                          </p>
+            </div>
             <p className='relative'>
               <label htmlFor="password">Password</label>
               {password !== "" && <FontAwesomeIcon onClick={() => setToggle(!toggle)} icon={faEye} className='absolute top-[2.2em] right-[10px] cursor-pointer'/>}
-              <input className='block w-full p-[8px] rounded-[5px] shadow-sm border-[1.5px] border-[--blackv]' type={toggle ? "password" : "text"} required onChange={(e) => setPassword(e.target.value)} name="password" id="password" />
+              <input className='block text-[--black] w-full p-[8px] rounded-[5px] shadow-sm border-[1.5px] border-[--blackv]' type={toggle ? "password" : "text"} required onChange={(e) => setPassword(e.target.value)} name="password" id="password" />
             </p>
             <p className='relative'>
               <label htmlFor="password">Confirm Password</label>
               {password !== "" && <FontAwesomeIcon onClick={() => setToggle(!toggle)} icon={faEye} className='absolute top-[2.2em] right-[10px] cursor-pointer'/>}
-              <input className='block w-full p-[8px] rounded-[5px] shadow-sm border-[1.5px] border-[--blackv]' type={toggle ? "password" : "text"} required onChange={(e) => setPassword1(e.target.value)} name="password1" id="password1" />
+              <input className='block text-[--black] w-full p-[8px] rounded-[5px] shadow-sm border-[1.5px] border-[--blackv]' type={toggle ? "password" : "text"} required onChange={(e) => setPassword1(e.target.value)} name="password1" id="password1" />
             </p>
 
             <button className='p-[10px] bg-[--black] rounded-[5px] shadow-sm shadow-[--blackv] text-[--nav] poppins font-bold' type="submit">{loading ? <FontAwesomeIcon className='text-2xl animate-spin' icon={faSpinner}/> : "Sign UP"}</button>
