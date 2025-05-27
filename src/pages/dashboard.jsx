@@ -77,6 +77,7 @@ function Dashboard() {
                     if(response.data.data .length <= 0) {
                         setComplete(prev => !prev)
                     }
+                    // console.log(response.data.data)
                     const object = response.data.data.map(item => ({
                         orderId : item.orderId, 
                         date : item.date, 

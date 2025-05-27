@@ -34,14 +34,18 @@ const handleSumbit = async (e, onError, onLogin, data, onLoading) => {
 
     try{
       const response = await Axios.post("/api/auth/login/user/", data.data)
+      console.log(response)
       // return
       if (response.status == 200) {
         data.onResult(true)
-        // localStorage.setItem('access', response.data.access)
+        localStorage.setItem('access', response.data.access)
+        localStorage.setItem('username', response.data.username)
         data.onAuth(true)
         data.onAdmin(response.data.is_admin)
         sessionStorage.setItem('admin', response.data.is_admin)
         sessionStorage.setItem('auth', true)
+
+        console.log(localStorage)
       }
     }
     catch(error) {

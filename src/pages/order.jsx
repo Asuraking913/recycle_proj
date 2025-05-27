@@ -14,10 +14,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 import { useInterval } from 'react-use'
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { useNavigate } from 'react-router-dom'
 
 function OrderPage() {
 
   const query = useQueryClient()
+  const navigate = useNavigate()
 
   const [selectedItems, setSelectedItems] = useState([
 ])
@@ -62,7 +64,7 @@ const [cartBar, setCartBar] = useState(false)
           const response = await Axios.get(`api/product/?page=${pageParam}`)
           if(response.status === 200) {
             setFullCount(prev => prev = response.data.count)
-            console.log(response.data.results)
+            // console.log(response.data.results)
             return response.data.results
           }
           
@@ -136,13 +138,22 @@ useInterval(() => {
               <div className='flex items-center justify-between py-[10px] pr-[50px]'>
                 <h1 className='sm:text-2xl text-xl sm:text-left text-center font-bold poppins py-[.5em] text-[--nav]'>
                     
-                    Recycled Goods Available for Sale
+                    Inventory Available For Sale
                 
                 </h1>
 
                 <button onClick={() => {
 
                   if(selectedItems.filter(item => !(deleted.includes(item.id))).length > 0) {
+
+                    const username = localStorage.getItem('username');
+                    if (username === null) {
+                      console.log(username)
+                      console.log(localStorage)
+                      // navigate("/authenticate")
+                      return
+                    };
+
                     setShowCart(true)
                     return
                   }

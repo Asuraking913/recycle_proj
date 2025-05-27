@@ -102,7 +102,7 @@ function CartBar({selectedItems, onChange, onOrder, onShowCart}) {
         </div>
         <div className='flex justify-between'>
             <h2 className='text-[--nav] font-bold'>Current Order</h2>
-            <p className='text-[--black] text-[0.8rem]'>{selectedItems.filter(items => items.quantity != 0).length} Item</p>
+            <p className='text-[--nav] text-[0.8rem]'>{selectedItems.filter(items => items.quantity != 0).length} Item</p>
         </div>
         <div className='sm:max-h-[300px] max-h-[400px] rounded-[10px] bg-[--bg] p-[.5em] '>
             <div className='flex flex-col gap-[.5em] overflow-scroll h-full' ref={cartBox}>
