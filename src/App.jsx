@@ -10,6 +10,7 @@ import verifyToken from './utils/handleVerify'
 import TestData from './components/text'
 // import SideBar from './components/primary-comp/sidebar'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import Profile from "./pages/profile"
 
 const queryClient = new QueryClient()
 
@@ -33,6 +34,7 @@ function App() {
                 <Route path={"/test"} element={<TestData />}/>
                 <Route element={<PrivateRoute />}>
                   <Route path={"/dashboard"} element = {<Dashboard />}/>
+                  <Route path={"/profile"} element = {<Profile />}/>
                 </Route>
               </Routes>
           </Router>

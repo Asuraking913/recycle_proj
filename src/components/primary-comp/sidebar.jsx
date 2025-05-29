@@ -8,12 +8,21 @@ function SideBar({nav}) {
     const navigate = useNavigate()
 
     const [visible, setVisible] = useState(false)
+    const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('username') === null)
 
     useEffect(() => {
         if(nav) {
             setVisible(true)
         }
     }, [nav])
+
+    useEffect(() =>{
+
+        if (isLoggedIn) {
+            navigate("/authenticate")
+        }
+
+    }, [])
 
   return (
     <div className='z-[4] fixed h-[90vh] top-[4.5em] bg-transparent shadow-md rounded-[10px] shadow-[--nav]'>
@@ -99,10 +108,20 @@ function SideBar({nav}) {
                         <FontAwesomeIcon className='mr-[1em]' icon={faGear}/>
                         <button>Settings</button>
                     </li>
-                    <li className='poppins font-[semibold] text-[1.2em] text-[--nav] p-[.5em] cursor-pointer hover:bg-[--nav] hover:text-[--white] rounded-[5px]'>
-                        <FontAwesomeIcon className='mr-[1em]' icon={faPerson}/>
-                        <button>Customer Support</button>
-                    </li>
+                    {
+
+                        !isLoggedIn
+
+                        ?
+
+                        <li onClick={() => navigate("/profile")} className='poppins font-[semibold] text-[1.2em] text-[--nav] p-[.5em] cursor-pointer hover:bg-[--nav] hover:text-[--white] rounded-[5px]'>
+                                            <FontAwesomeIcon className='mr-[1em]' icon={faPerson}/>
+                                            <button>Profile</button>
+                                        </li>
+                         :
+
+                         ""
+                    }
                 </ul>
             </motion.div>
             }

@@ -25,6 +25,7 @@ function Dashboard() {
     const [clicked, setClicked] = useState("orders") 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
+    const [username, setUsername] = useState(localStorage.getItem('username'))
     const navigate = useNavigate()
     const value = adminUser ? 9 : 2
     const [complete, setComplete] = useState(false)
@@ -139,7 +140,14 @@ function Dashboard() {
             <div className={`m-[10px] ${adminUser ? "sm:w-[50%]" :"sm:w-[63%]"}`}>
                 <div className='  '>
                     {!adminUser && <h1 className='text-[2rem] text-[--nav] poppins font-bold'>Welcome to Your DashBoard</h1>}
-                    {adminUser && <h1 className='text-[2rem] poppins text-[--nav] font-bold capitalize'>Welcome to the Admin panel</h1>}
+                    {adminUser && 
+                    <h1 className='text-[2rem] poppins text-[--nav] font-bold capitalize'>Welcome to your dashboard 
+ 
+                        <span className='capitalize ml-[10px]'>{username.toString()}</span>
+
+                    </h1>
+
+                }
                     <p className='poppins text-[--nav] text-[0.9rem]'>View your recent transactions and activity</p>
                 </div>
             </div>
