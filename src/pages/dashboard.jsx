@@ -25,13 +25,16 @@ function Dashboard() {
     const [clicked, setClicked] = useState("orders") 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
-    const [username, setUsername] = useState(localStorage.getItem('username'))
+    const [username, setUsername] = useState(localStorage.getItem('username') ? localStorage.getItem('username') : null)
     const navigate = useNavigate()
     const value = adminUser ? 9 : 2
     const [complete, setComplete] = useState(false)
     const [fullCount, setFullCount] = useState(0)
 
     useEffect(() => {
+        if(!username) {
+            navigate("/authenticate")
+        }
         let admin = sessionStorage.getItem('admin');
         console.log(admin)
         if(!(admin === false)) {

@@ -16,13 +16,13 @@ function SideBar({nav}) {
         }
     }, [nav])
 
-    useEffect(() =>{
+    // useEffect(() =>{
 
-        if (isLoggedIn) {
-            navigate("/authenticate")
-        }
+    //     if (isLoggedIn) {
+    //         navigate("/authenticate")
+    //     }
 
-    }, [])
+    // }, [])
 
   return (
     <div className='z-[4] fixed h-[90vh] top-[4.5em] bg-transparent shadow-md rounded-[10px] shadow-[--nav]'>

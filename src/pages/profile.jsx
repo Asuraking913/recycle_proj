@@ -1,29 +1,84 @@
 import React, { useState, useEffect } from 'react';
 import { User, Facebook, Twitter, Instagram, Plus, BarChart3, HelpCircle, Settings, LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'
+import Axios from '../utils/Axios';
+import { faSpinner, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default function ProfileForm() {
   const [formData, setFormData] = useState({
     username: localStorage.getItem('username'),
     email: "example@gmail.com",
     password: 'bigbigworld23',
-    repeatPassword: 'bigbigworld23',
+    contact : 'testcontact',
     aboutMe: 'I am Asen Krekmanov and I am dedicated UI/UX Designer from Sofia, Bulgaria.'
   });
 
+  const [username, setUsername] = useState('asura')
+  const [contact, setContact] = useState('234234234234')
+  const [email, setEmail] = useState('example@gmail.com')
+  const  [loading, setLoading] = useState(false)
+  const [location, setLocation] = useState("")
+  const [error, setError] = useState("")
+  const [success, setSuccess] = useState("")
+
    const navigate = useNavigate()
-  console.log(localStorage.getItem('username'))
 
   const handleInputChange = (e) => {
+
+    if(e.target) {}
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
     });
   };
 
-  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('username') === null)
-	useEffect(() =>{
+  const handleProfileDetails = async () => {
+    let user_id = localStorage.getItem('user_id')
+            setLoading(prev => true)
 
+    let data = { 'user_id' : user_id, "location" : location }
+
+    if(user_id) {
+      const response = await Axios.post("/api/profile/", data)
+
+      console.log(response.data)
+
+      setUsername(prev => response.data.data.username)
+      setEmail(prev => response.data.data.email)
+      setContact(prev => response.data.data.contact)
+      setSuccess(prev => "Updated)")
+
+      return
+
+    }
+
+      setLoading(prev => false)
+      setError('An Error occurred')
+
+  }
+
+  const fetchProfileDetails = async () => {
+
+    let user_id = localStorage.getItem('user_id')
+
+    const response = await Axios.get(`/api/profile?id=${user_id}`)
+
+    if(response.status == 200) {
+      setUsername(prev => response.data.data.username)
+      setEmail(prev => response.data.data.email)
+      setContact(prev => response.data.data.contact)
+      setLocation(prev => response.data.data.location)
+    }
+
+  }
+
+  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem('username') === null)
+
+
+	   useEffect(() =>{
+
+        fetchProfileDetails()
         if (isLoggedIn) {
             navigate("/authenticate")
         }
@@ -100,9 +155,9 @@ export default function ProfileForm() {
                   <input
                     type="text"
                     name="username"
-                    value={formData.username}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
+                    value={username}
+                    onChange={e => setUsername(e.target.value)}
+                    className="w-full px-4 capitalize py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                   />
                 </div>
 
@@ -114,8 +169,8 @@ export default function ProfileForm() {
                   <input
                     type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     readOnly
                     className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                   />
@@ -128,7 +183,9 @@ export default function ProfileForm() {
                   </label>
                   <input
                     type="text"
-                    name="location"
+                    name="contact"
+                    onChange={e => setContact(e.target.value)}
+                    value={contact}
                     placeholder='e.g 09123456734'
                     className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                   />
@@ -143,7 +200,6 @@ export default function ProfileForm() {
                     type="password"
                     name="repeatPassword"
                     value={formData.repeatPassword}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700"
                   />
                 </div>*/}
@@ -155,8 +211,8 @@ export default function ProfileForm() {
                   </label>
                   <textarea
                     name="aboutMe"
-                    value={formData.aboutMe}
-                    onChange={handleInputChange}
+                    value={location}
+                    onChange={e => setLocation(e.target.value)}
                     rows={4}
                     className="w-full px-4 py-3 bg-gray-100 border-0 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 resize-none"
                   />
@@ -164,8 +220,27 @@ export default function ProfileForm() {
 
                 {/* Update Button */}
                 <div className="pt-4">
-                  <button className="w-full poppins linear-grad hover:sm:scale-105 duration-[0.3s] text-white font-medium py-3 px-6 rounded-md transition-colors">
-                    Update Information
+                  <button onClick={() => handleProfileDetails()} className="w-full poppins linear-grad hover:sm:scale-105 duration-[0.3s] text-white font-medium py-3 px-6 rounded-md transition-colors">
+
+                    
+
+                    {
+
+                    loading 
+
+                      ?
+
+                      <i>
+                          <FontAwesomeIcon icon={faSpinner} className='text-[1.4rem] text-[--nav] animate-spin'/>
+                      </i>
+
+                      :
+
+                      <span>
+                        Update Information
+                      </span>
+                    }
+
                   </button>
                 </div>
               </div>
