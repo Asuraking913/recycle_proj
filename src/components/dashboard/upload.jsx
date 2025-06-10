@@ -21,12 +21,15 @@ function Upload() {
     const [descrip, setDescript] = useState("")
     const [weight, setWeight] = useState(0)
     const [success, setSuccess] = useState(false)
+    const user_id = localStorage.getItem('user_id')
     const fileInput = useRef(null)
+
 
     const nameRef = useRef(null)
     const priceRef = useRef(null)
     const stockRef = useRef(null)
     const catRef = useRef(null)
+
 
     let data = {
         name : productName, 
@@ -46,7 +49,8 @@ function Upload() {
         nameRef : nameRef, 
         priceRef: priceRef, 
         stockRef : stockRef, 
-        catRef : catRef
+        catRef : catRef, 
+        id_ : user_id
     }
 
 

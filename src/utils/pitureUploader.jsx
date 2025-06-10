@@ -22,6 +22,7 @@ export const handleSubmit = async (e, data) => {
     formData.append('image', data.img)
     formData.append('weight', data.weight)
     formData.append('descrip', data.descrip)
+    formData.append('user_id', data.id_)
 
     // for (var pair of formData.entries()) {
     //     console.log(pair[0]+ ', ' + pair[1]);

@@ -3,9 +3,11 @@ import Axios from "../Axios"
 const handleOrders = async (itemsList, onLoading, onError, onStatus) => {
         onLoading(true)
         const new_data = itemsList.filter(items => items.quantity != 0)
+        const user_id = localStorage.getItem('user_id')
         const productIds = new_data.map(item => ({
             product : item.id, 
-            quantity : item.quantity
+            quantity : item.quantity, 
+            id : user_id
         }))
         
     try{
