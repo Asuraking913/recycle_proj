@@ -2,7 +2,7 @@ import { faDollar, faNairaSign } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
-function OrderItems({img, name, price, quantity}) {
+function OrderItems({img, name, price, quantity, weight}) {
   return (
     <div className='flex items-center border-b-[--blackv] border-b-[1.5px] p-[4px] '>
         <div className='flex flex-col w-[50%]'>
@@ -12,7 +12,7 @@ function OrderItems({img, name, price, quantity}) {
             <p className='ubun font-bold'>{name}</p>
             <div className='flex justify-between poppins text-[0.9rem]'>
                 <p><FontAwesomeIcon icon={faNairaSign}/>{price.toLocaleString()}</p>
-                <p>Quantity: {quantity}</p>
+                <p>Weight: {weight}</p>
             </div>
         </div>
     </div>

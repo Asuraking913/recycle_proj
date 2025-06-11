@@ -77,10 +77,10 @@ function OrderPrev({items, onOrder, onSelecteItems, onCartBar, onFood, params}) 
                 {   status ?
 
                     <div className='flex flex-col items-center gap-[10px]'>
-                        <h2 className='text-center ubun text-[1.5rem] font-bold'>Your Order has been processed</h2>
+                        <h2 className='text-center ubun text-[1.5rem] font-bold'>Your Order is being processed</h2>
                         <p className='text-center text-green-600 text-[1.5rem]'><FontAwesomeIcon icon={faCheckCircle}/></p>
                         <button onClick={() => onOrder(false)} className='p-[10px] sm:hover:w-[95%] duration-[0.5s] bg-[--black] w-full text-[--nav] poppins sm:text-[1.2rem] rounded-[5px]'>
-                            Continue shopping
+                            Go to Payment Portal
                         </button>
                     </div>
 

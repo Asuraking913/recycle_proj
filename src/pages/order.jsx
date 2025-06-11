@@ -142,27 +142,30 @@ useInterval(() => {
                 
                 </h1>
 
-                <button onClick={() => {
-
-                  if(selectedItems.filter(item => !(deleted.includes(item.id))).length > 0) {
-
-                    const username = localStorage.getItem('username');
-                    if (username === null) {
-                      console.log(username)
-                      console.log(localStorage)
-                      // navigate("/authenticate")
+                <span className='flex items-center gap-[10px] sm:text-2xl text-xl sm:text-left text-center font-bold poppins py-[.5em] text-[--nav]'>
+                  Cart
+                  <button onClick={() => {
+                  
+                    if(selectedItems.filter(item => !(deleted.includes(item.id))).length > 0) {
+                  
+                      const username = localStorage.getItem('username');
+                      if (username === null) {
+                        console.log(username)
+                        console.log(localStorage)
+                        // navigate("/authenticate")
+                        return
+                      };
+                  
+                      setShowCart(true)
                       return
-                    };
-
-                    setShowCart(true)
-                    return
-                  }
-
-                  setError("Your cart is empty")
-
-                }} className='text-2xl hover:scale-105 duration-[0.5s] p-[10px] bg-[--nav] rounded-full shadow-sm shadow-white'>
-                  <MdOutlineShoppingCart />
-                </button>
+                    }
+                  
+                    setError("Your cart is empty")
+                  
+                  }} className='text-2xl text-[--black] hover:scale-105 duration-[0.5s] p-[10px] bg-[--nav] rounded-full shadow-sm shadow-white'>
+                    <MdOutlineShoppingCart />
+                  </button>
+                </span>
               </div>
               
               <div className='flex sm:w-[100%] flex-wrap gap-[.4em] sm:gap-2' >

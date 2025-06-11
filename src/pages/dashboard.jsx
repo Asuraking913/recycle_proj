@@ -81,11 +81,14 @@ function Dashboard() {
                     if(response.data.data .length <= 0) {
                         setComplete(prev => !prev)
                     }
-                    // console.log(response.data.data)
+                    console.log(response.data.data)
                     const object = response.data.data.map(item => ({
                         orderId : item.orderId, 
                         date : item.date, 
-                        items : item.products
+                        items : item.products, 
+                        username : item.username, 
+                        location : item.location, 
+                        contact : item.contact
                     }))
                     return object
                 }
@@ -177,7 +180,7 @@ function Dashboard() {
                     {
                         posts?.map((items, i) =>(
                             <span key={i} ref={i === posts.length - 1 ? lastPost  : previousPost}>
-                                {items && <Orders items={items.items} orderId={items.orderId} date={items.date}/>}
+                                {items && <Orders items={items.items} orderContact={items.contact} orderLocation={items.location} orderUsername={items.username} orderId={items.orderId} date={items.date}/>}
                             </span>)
                         )
                     }

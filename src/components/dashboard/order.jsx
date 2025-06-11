@@ -3,7 +3,7 @@ import OrderItems from './orderItems'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faCopy, faNairaSign, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-function Orders({orderId, date, items}) {
+function Orders({orderId, date, items, orderUsername, orderLocation, orderContact}) {
 
     const totalPrice = items.reduce((value, item) => {
 
@@ -18,9 +18,20 @@ function Orders({orderId, date, items}) {
 
   return (
     <div className='w-[350px]  rounded-[10px] p-[10px] linear-grad shadow-md text-[--nav] shadow-white flex flex-col gap-[5px]'>
-        <div className='flex justify-between flex-row-reverse'>
-            <p className='text-[0.8rem] poppins flex justify-between items-center'>{}<button> <FontAwesomeIcon icon={faCopy}/></button></p>
-            <p className='text-[0.7rem] capitalize poppins'>{orderId}</p>
+        <div className='flex justify-between flex-row'>
+  
+            <p className='text-[0.9rem] capitalize poppins font-bold'>Buyer Name:</p>
+            <p className='text-[0.75rem] capitalize poppins'>{orderUsername}</p>
+        </div>
+        <div className='flex justify-between flex-row'>
+  
+            <p className='text-[0.9rem] capitalize poppins font-bold'>Buyer Location:</p>
+            <p className='text-[0.75rem] text-end capitalize poppins w-[50%] mt-[10px] mb-[10px]'>{orderLocation}</p>
+        </div>
+        <div className='flex justify-between flex-row'>
+  
+            <p className='text-[0.9rem] capitalize poppins font-bold'>Buyer Contact:</p>
+            <p className='text-[0.75rem] text-end capitalize poppins'>{orderContact}</p>
         </div>
         <p className='text-[0.7rem] capitalize poppins'>{date}</p>
 
