@@ -152,7 +152,7 @@ useInterval(() => {
                       if (username === null) {
                         console.log(username)
                         console.log(localStorage)
-                        // navigate("/authenticate")
+                        navigate("/authenticate")
                         return
                       };
                   
