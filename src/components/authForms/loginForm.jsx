@@ -62,7 +62,7 @@ function LoginForm({onLogin}) {
         animate={{
           x: 0
         }}
-        className='poppins flex items-center gap-[1em] fixed top-[1em] bg-[--nav] p-[15px] rounded-[5px] poppins right-[10px] text-center'>
+        className='poppins flex items-center gap-[1em] text-[--black] fixed top-[1em] bg-[--nav] p-[15px] rounded-[5px] poppins right-[10px] text-center'>
           {error}
           <FontAwesomeIcon icon={faTimesCircle} className='text-red-500'/>
         </motion.p>
