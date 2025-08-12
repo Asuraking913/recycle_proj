@@ -96,7 +96,7 @@ function LoginForm({onLogin}) {
                 <span>Continue with google</span>
               </div>
             </span>
-            <span onClick={() => onLogin(false)} className='text-center text-[0.9rem] poppins underline hover:opacity-80 cursor-pointer'>Sign Up?</span>
+            <span onClick={() => onLogin(false)} className='text-center text-[0.9rem] poppins underline hover:opacity-80 cursor-pointer text-[--nav]'>Sign Up?</span>
           </form>
   )
 }
