@@ -2,7 +2,7 @@ import axios from "axios";
 
 const Axios = axios.create({
     withCredentials: true, 
-    // baseURL: "https://israel913.pythonanywhere.com/"
+    baseURL: "https://recycle-proj-api.onrender.com/"
     
 })
 
