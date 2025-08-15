@@ -3,9 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBarsStaggered, faSearch } from '@fortawesome/free-solid-svg-icons'
 import logo from "../../assets/logo.png"
 import { motion } from 'framer-motion'
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Nav({onNav, nav}) {
 
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("user_id") ? true : false)
+  const navigate = useNavigate()
 
   return (
     <div className='flex justify-between bg-transparent fixed  w-full z-[200] items-center py-[.5em] bg-[--nav] px-[1em] sm:px-[--pdx]'>
@@ -17,6 +21,32 @@ function Nav({onNav, nav}) {
       <div onClick={() => {onNav(!nav)}} className='sm:hidden text-2xl'>
         <FontAwesomeIcon icon={faBarsStaggered}/>
       </div>
+
+      {
+
+        loggedIn ?
+
+          <div className='flex items-center gap-[10px]'>
+              <button onClick={() => {
+                localStorage.clear()
+                navigate("/")
+              }} className='px-[15px] py-[10px] bg-[--nav] rounded-[3px] poppins'>
+                Log Out
+              </button>
+            </div>
+
+        :
+
+
+        <div className='flex items-center gap-[10px]'>
+              <button onClick={() => navigate("/authenticate")} className='px-[15px] py-[10px] bg-[--nav] rounded-[3px] poppins'>
+                Sign Up
+              </button>
+              <button onClick={() => navigate("/authenticate")} className='px-[15px] py-[10px] bg-[--black] text-[--nav] shadow-sm shadow-[--gray] linear-grad rounded-[3px] poppins'>
+                Log In
+              </button>
+            </div>
+      }
 
       {/*<div className='hidden sm:block'>
         <form action="">

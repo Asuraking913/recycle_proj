@@ -30,6 +30,7 @@ function Landing() {
     const [isMobileView, setIsMobileView] = useState(window.innerWidth < 640)
     const ref = useRef(null)
     const inView = useInView(ref, {once : true})
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem("user_id") ? true : false)
     
     const [objList, setObjList] = useState([
       {
@@ -290,8 +291,28 @@ function Landing() {
                 <div className='bg-[--black] flex items-center justify-center w-[40px] h-[40px]  text-2xl text-[--nav] shadow-md shadow-white rounded-l-[5px]'>
                   <FontAwesomeIcon icon={faAngleRight}/>
                 </div>
-                <div onClick={() => navigate("/authenticate")} className='bg-[--nav] capitalize text-[1.1rem] poppins h-[40px] flex items-center justify-center px-[.5em] rounded-r-[5px]'>
-                   Log in
+                <div onClick={() => {
+
+                  if(loggedIn) {
+                    navigate("/menu")
+                  }
+                  else {
+                    navigate("/authenticate")}
+                  }
+
+                } className='bg-[--nav] capitalize text-[1.1rem] poppins h-[40px] flex items-center justify-center px-[.5em] rounded-r-[5px]'>
+                   {
+
+                    loggedIn ?
+
+                      "Browse Inventory"
+
+                    :
+
+
+                    "Log in"
+
+                  }
                 </div>
             </motion.button>
           </motion.div>
